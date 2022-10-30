@@ -15,6 +15,7 @@ info.pathExec= process.argv[0]
 info.processId= process.pid
 info.pathPoyect= process.argv[1]
 info.cantidadCPUs= cpus
+info.puerto= process.env.PORT
 
 
 export default info;
