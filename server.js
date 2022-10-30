@@ -29,18 +29,9 @@ const args= minimist(process.argv.slice(2))
 
 const port = process.env.PORT || 8080
 const mongoSesion= process.env.MONGOSESION
-const mongoUsuario=process.env.MONGOUSER
+/* const mongoUsuario=process.env.MONGOUSER */
+const mongoUsuario=process.env.MONGOURI
 
-mongoose
-  .connect(mongoUsuario)
-  .then(() => {
-    try {
-      logger.info(`${mongoUsuario} connectada`)
-    } catch (error) {
-      logger.error(`Erro al conectar con ${mongoUsuario}:  ${error}`)
-    }
-  })
-  .catch((err) => console.log(err));
 
 let productos=[]
 let mensajes=[]
@@ -61,6 +52,18 @@ app.set('json spaces', 2)
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
+
+mongoose
+  .connect(mongoUsuario)
+  .then(() => {
+    try {
+      logger.info(`${mongoUsuario} connectada`)
+    } catch (error) {
+      logger.error(`Erro al conectar con ${mongoUsuario}:  ${error}`)
+    }
+  })
+  .catch((err) => console.log(err));
+
 app.use(
   session({
     store: MongoStore.create({ mongoUrl: mongoSesion }),
