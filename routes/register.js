@@ -1,8 +1,7 @@
 import { Router } from "express";
 const register = Router();
 
-import User from "../models/User.js";
-/* import bcrypt from "bcrypt"; */
+import User from "../models/user.js";
 
 
 register.get('/', (req, res)=>{
