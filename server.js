@@ -54,7 +54,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
 
 mongoose
-  .connect(mongoUsuario)
+  .connect(mongoUsuario,{ useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     try {
       logger.info(`${mongoUsuario} connectada`)
