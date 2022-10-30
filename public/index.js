@@ -2,6 +2,16 @@ const socket = io();
 
 const input = document.getElementById("inputChat");
 
+input.addEventListener("keypress", function(event) {
+  
+  if (event.key === "Enter") {
+  
+    event.preventDefault();
+  
+    document.getElementById("enviarChat").click();
+  }
+}); 
+
 document.getElementById("enviarChat").addEventListener("click", () => {
 
   if (document.getElementById('inputMail').value!==""){
